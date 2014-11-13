@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 16:32:10 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/10 17:04:02 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2014/11/12 17:36:10 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 # define GET_NEXT_LINE_H
 
 # include "libft.h"
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
 
-# define BUF_SIZE 32
+# define BUF_SIZE 320
 
 typedef struct			s_spill
 {
@@ -23,5 +26,7 @@ typedef struct			s_spill
 	int					fd;
 	struct s_spill		*next;
 }						t_spill;
+
+int						get_next_line(int const fd, char **line);
 
 #endif
