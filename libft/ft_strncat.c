@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/09 16:32:10 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/13 16:32:51 by tgauvrit         ###   ########.fr       */
+/*   Created: 2014/09/03 22:09:53 by tgauvrit          #+#    #+#             */
+/*   Updated: 2014/11/08 19:26:04 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-
-# define BUF_SIZE 320
-
-typedef struct			s_spill
+char	*ft_strncat(char *dest, char *src, int nb)
 {
-	char				*text;
-	int					fd;
-	struct s_spill		*next;
-}						t_spill;
+	int		i;
+	char	*end_dest;
 
-int						get_next_line(int const fd, char **line);
-
-#endif
+	if (nb <= 0)
+		return (dest);
+	end_dest = dest + ft_strlen(dest);
+	i = 0;
+	while (i < nb && src[i] != '\0')
+	{
+		end_dest[i] = src[i];
+		i++;
+	}
+	while (i < nb)
+	{
+		end_dest[i++] = '\0';
+		i++;
+	}
+	end_dest[i] = '\0';
+	return (dest);
+}

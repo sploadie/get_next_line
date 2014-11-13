@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/09 16:32:10 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/13 16:32:51 by tgauvrit         ###   ########.fr       */
+/*   Created: 2014/11/06 13:34:56 by tgauvrit          #+#    #+#             */
+/*   Updated: 2014/11/09 16:53:42 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-
-# define BUF_SIZE 320
-
-typedef struct			s_spill
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	char				*text;
-	int					fd;
-	struct s_spill		*next;
-}						t_spill;
+	t_list	*cell;
 
-int						get_next_line(int const fd, char **line);
-
-#endif
+	cell = (t_list *)malloc(sizeof(t_list));
+	if (!cell)
+		return (0);
+	if (content == NULL)
+		cell->content = NULL;
+	else
+		cell->content = ft_memdup(content, content_size);
+	if (!cell->content)
+		content_size = 0;
+	cell->content_size = content_size;
+	cell->next = 0;
+	return (cell);
+}

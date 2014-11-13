@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/09 16:32:10 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/13 16:32:51 by tgauvrit         ###   ########.fr       */
+/*   Created: 2014/11/05 09:39:43 by tgauvrit          #+#    #+#             */
+/*   Updated: 2014/11/08 19:27:41 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-
-# define BUF_SIZE 320
-
-typedef struct			s_spill
+void	ft_memdel(void **ap)
 {
-	char				*text;
-	int					fd;
-	struct s_spill		*next;
-}						t_spill;
+	unsigned char	**saf_ap;
 
-int						get_next_line(int const fd, char **line);
-
-#endif
+	saf_ap = (unsigned char**)ap;
+	free(*saf_ap);
+	*saf_ap = NULL;
+}

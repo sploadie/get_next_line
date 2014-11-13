@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/09 16:32:10 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/13 16:32:51 by tgauvrit         ###   ########.fr       */
+/*   Created: 2014/11/06 13:54:52 by tgauvrit          #+#    #+#             */
+/*   Updated: 2014/11/09 16:53:20 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-
-# define BUF_SIZE 320
-
-typedef struct			s_spill
+void	*ft_memdup(const void *src, size_t size)
 {
-	char				*text;
-	int					fd;
-	struct s_spill		*next;
-}						t_spill;
+	unsigned char	*dup;
+	size_t			i;
+	unsigned char	*saf_src;
 
-int						get_next_line(int const fd, char **line);
-
-#endif
+	dup = (unsigned char *)malloc(size);
+	if (!dup)
+		return (dup);
+	saf_src = (unsigned char*)src;
+	i = 0;
+	while (i < size)
+	{
+		dup[i] = saf_src[i];
+		i++;
+	}
+	return (dup);
+}

@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/09 16:32:10 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/13 16:32:51 by tgauvrit         ###   ########.fr       */
+/*   Created: 2014/09/02 22:16:02 by tgauvrit          #+#    #+#             */
+/*   Updated: 2014/11/08 19:25:48 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-# include "libft/libft.h"
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-
-# define BUF_SIZE 320
-
-typedef struct			s_spill
+char	*ft_strstr(char *str, char *to_find)
 {
-	char				*text;
-	int					fd;
-	struct s_spill		*next;
-}						t_spill;
+	int	i;
 
-int						get_next_line(int const fd, char **line);
-
-#endif
+	if (to_find[0] == '\0')
+		return (str);
+	if (str == '\0')
+		return ('\0');
+	i = 0;
+	while (to_find[i] == str[i] && str[i] != '\0')
+	{
+		i++;
+		if (to_find[i] == '\0')
+			return (str);
+	}
+	if (str[i] == '\0')
+		return ('\0');
+	return (ft_strstr(str + 1, to_find));
+}
