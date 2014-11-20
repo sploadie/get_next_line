@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/09/02 22:16:02 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/08 19:27:33 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2014/11/20 09:37:08 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	unsigned char	*saf_dst;
 	unsigned char	*saf_src;
 
+	if (!dst || !src)
+		return (NULL);
 	saf_dst = (unsigned char*)dst;
 	saf_src = (unsigned char*)src;
 	i = 0;

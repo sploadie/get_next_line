@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 11:10:17 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/09 12:28:53 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2014/11/20 11:34:17 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	ft_digitc(int n)
 {
-	int count;
-	int	tens;
+	int		count;
+	long	tens;
 
 	count = 1;
 	tens = 10;

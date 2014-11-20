@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 18:06:15 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/13 16:20:48 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2014/11/20 12:50:52 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,16 @@ static t_spill	*get_spill(int const fd)
 	{
 		if (curr_spill->fd == fd)
 			return (curr_spill);
+		curr_spill = curr_spill->next;
 	}
-	curr_spill = (t_spill*)malloc(sizeof(t_spill*));
+	curr_spill = (t_spill*)malloc(sizeof(t_spill));
 	if (!curr_spill)
 		return (NULL);
 	curr_spill->fd = fd;
-	if (!(curr_spill->text = ft_strnew(0)))
+	curr_spill->text = (char*)malloc(sizeof(char));
+	if (!curr_spill->text)
 		return (NULL);
+	*(curr_spill->text) = '\0';
 	curr_spill->next = first_spill;
 	first_spill = curr_spill;
 	return (curr_spill);
@@ -46,13 +49,12 @@ static int		scoop_spill(t_spill *spill,
 			return (0);
 		return (1);
 	}
-	*line = ft_strnew((int)(cutoff - spill_text));
+	// *line = ft_strnew((int)(cutoff - spill_text));
 	*line = ft_strsub(spill_text, 0, (int)(cutoff - spill_text));
 	if (!*line)
 		return (0);
 	to_free = spill->text;
-	cutoff++;
-	spill->text = ft_strdup(cutoff);
+	spill->text = ft_strdup(cutoff + 1);
 	if (!spill->text)
 		return (0);
 	free(to_free);
@@ -81,9 +83,16 @@ static int		read_to_spill(int const fd, t_spill *spill, char **line)
 	spill_ret = read_spill(spill, line);
 	if (spill_ret == -1 || spill_ret == 1)
 		return (spill_ret);
+	// if (*spill->text != '\0')//FIXME
+	// 	ft_putstr("HONK");//FIXME
 	while ((ret = read(fd, buf, BUF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
+		// if (buf[ret - 1] == '\0')
+		// {//FIXME
+		// 	buf[ret - 1] = '\n';
+		// 	ft_putstr("BAM");//FIXME
+		// }//FIXME
 		*line = spill->text;
 		spill->text = ft_strjoin(spill->text, buf);
 		free(*line);
@@ -93,11 +102,7 @@ static int		read_to_spill(int const fd, t_spill *spill, char **line)
 	}
 	if (ret != 0)
 		return (-1);
-	*line = spill->text;
-	spill->text = ft_strjoin(spill->text, buf);
-	free(*line);
-	if (!scoop_spill(spill, spill->text, line, NULL))
-		return (-1);
+	scoop_spill(spill, spill->text, line, NULL);
 	return (0);
 }
 
@@ -105,7 +110,11 @@ int				get_next_line(int const fd, char **line)
 {
 	t_spill	*spill;
 
+	if (!line)
+		return (-1);
+	// ft_putstr("DING");//FIXME
 	spill = get_spill(fd);
+	// ft_putstr("DONG");//FIXME
 	if (!spill)
 		return (-1);
 	return (read_to_spill(fd, spill, line));

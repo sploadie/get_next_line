@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 11:10:17 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/09 12:37:11 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2014/11/18 16:43:56 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*neoscript;
 
+	if (!s1 || !s2)
+		return (NULL);
 	neoscript = ft_strnew(ft_strlen((char*)s1) + ft_strlen((char*)s2));
 	if (!neoscript)
 		return (NULL);

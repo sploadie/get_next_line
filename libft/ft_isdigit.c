@@ -6,13 +6,11 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 11:41:20 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/04 11:56:56 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2014/11/14 17:26:53 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isdigit(int c)
 {
-	if (c >= 48 && c <= 57)
-		return (c);
-	return (0);
+	return ((c >= 48 && c <= 57));
 }

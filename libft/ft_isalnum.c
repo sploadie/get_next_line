@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 11:41:20 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/08 19:22:19 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2014/11/14 17:27:34 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int	ft_isalnum(int c)
 {
-	if (ft_isalpha(c) || ft_isdigit(c))
-		return (c);
-	return (0);
+	return ((ft_isalpha(c) || ft_isdigit(c)));
 }

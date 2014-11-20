@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 13:34:56 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/08 19:28:11 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2014/11/14 17:49:45 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
 {
-	t_list	*next;
-
-	if (*alst == NULL)
+	if (!alst || !*alst || !del)
 		return ;
 	del((*alst)->content, (*alst)->content_size);
-	next = (*alst)->next;
 	free(*alst);
-	*alst = next;
+	*alst = NULL;
 }

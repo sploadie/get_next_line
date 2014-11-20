@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 10:32:45 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/09 12:36:34 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2014/11/14 18:23:40 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@ int	ft_strequ(char const *s1, char const *s2)
 	unsigned int	i;
 
 	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0')
+	if (!s1 || !s2)
+		return (0);
+	while (s1[i] == s2[i])
+	{
+		if (s1[i] == '\0')
+			return (1);
 		i++;
-	if (s1[i] == '\0')
-		return (1);
+	}
 	return (0);
 }

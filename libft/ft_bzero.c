@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 12:54:38 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/08 19:28:36 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2014/11/14 17:18:45 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	int	*cap;
-
-	while (n-- > 0)
-	{
-		cap = s++;
-		*cap = 0;
-	}
+	ft_memset(s, 0, n);
 }

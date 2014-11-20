@@ -6,12 +6,14 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 10:06:58 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/05 10:11:07 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2014/11/18 16:37:08 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_strclr(char *s)
 {
+	if (!s)
+		return ;
 	while (*s != '\0')
 	{
 		*s = '\0';

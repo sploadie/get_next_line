@@ -6,12 +6,14 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 10:06:58 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/05 10:15:45 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2014/11/18 16:39:30 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_striter(char *s, void (*f)(char *))
 {
+	if (!s || !f)
+		return ;
 	while (*s != '\0')
 	{
 		f(s);
