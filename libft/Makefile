@@ -6,7 +6,7 @@
 #    By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/09/09 10:54:05 by tgauvrit          #+#    #+#              #
-#    Updated: 2014/11/09 14:00:35 by tgauvrit         ###   ########.fr        #
+#    Updated: 2014/11/27 13:17:58 by tgauvrit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CC =			gcc
 
 FLAGS =			-Wall -Werror -Wextra
 
-HEADER_DIR =	./
+HEADER_DIR =	./includes/
 
 FT_SRC_DIR =	./
 
