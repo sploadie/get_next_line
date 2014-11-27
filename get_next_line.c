@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 18:06:15 by tgauvrit          #+#    #+#             */
-/*   Updated: 2014/11/20 13:09:11 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2014/11/27 13:36:26 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int				get_next_line(int const fd, char **line)
 {
 	t_spill	*spill;
 
-	if (!line)
+	if (!line || BUF_SIZE < 1)
 		return (-1);
 	spill = get_spill(fd);
 	if (!spill)
